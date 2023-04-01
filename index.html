@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="icon" type="image/svg+xml" href="/src/favicon.svg">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickCart</title>
-    
-    <!-- PWA: Apple Touch Icon, and Service Worker registration. --><!-- Vite Plugin PWA will add the Web App Manifest during build -->
-    <link rel="apple-touch-icon" href="/images/pwa/icon-192x192.png">
-    <script type="module">
-      // Register Service Worker using Vite Plugin PWA
-      import { registerSW } from 'virtual:pwa-register';
-      registerSW();
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/src/favicon.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickCart</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+  <!-- PWA: Apple Touch Icon, and Service Worker registration. --><!-- Vite Plugin PWA will add the Web App Manifest during build -->
+  <link rel="apple-touch-icon" href="/images/pwa/icon-192x192.png">
+  <script type="module">
+    // Register Service Worker using Vite Plugin PWA
+    import { registerSW } from 'virtual:pwa-register';
+    registerSW();
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
 </html>
