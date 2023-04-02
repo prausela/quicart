@@ -17,8 +17,6 @@ const EditListPage = ({ currentList, setCurrentList, productsList }) => {
   const [trigger, setTrigger] = useState(true);
   const navigate = useNavigate();
 
-  console.log(currentList);
-
   useEffect(() => {
     setTrigger(!trigger);
   }, [currentList]);
@@ -44,7 +42,6 @@ const EditListPage = ({ currentList, setCurrentList, productsList }) => {
         )}
         value={option}
         onChange={(event, newValue) => {
-          console.log(newValue);
           setOption(newValue);
           let listName = currentList.name;
           let currentIdList = [...currentList.products];

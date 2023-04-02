@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 const SavedLists = ({ lists, currentList, setCurrentList }) => {
   const navigate = useNavigate();
-  console.log(currentList);
 
   return (
     <List
