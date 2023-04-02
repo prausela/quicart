@@ -64,7 +64,7 @@ function App() {
 
   const [imageMap, setImageMap] = useState('');
 
-  const [shoppings, setShoppings] = useState([{id: 1, name: "Carrefour Retiro", distance: "1.5km", address: "Arroyo 810",
+  const [shoppings, setShoppings] = useState([{id: 1, name: "Carrefour Retiro", distance: 1500, address: "Arroyo 810",
     map: [
       new ShopTile(TILE_TYPE.WALL, 0, 0), new ShopTile(TILE_TYPE.WALL, 0, 1),       new ShopTile(TILE_TYPE.WALL, 0, 2),   new ShopTile(TILE_TYPE.WALL, 0, 3),     new ShopTile(TILE_TYPE.WALL, 0, 4),                    new ShopTile(TILE_TYPE.WALL, 0, 5),  new ShopTile(TILE_TYPE.WALL, 0, 6),       new ShopTile(TILE_TYPE.WALL, 0, 7),       new ShopTile(TILE_TYPE.WALL, 0, 8),   new ShopTile(TILE_TYPE.WALL, 0, 9),         new ShopTile(TILE_TYPE.WALL, 0, 10),                  new ShopTile(TILE_TYPE.WALL, 0, 11),  new ShopTile(TILE_TYPE.WALL, 0, 12), new ShopTile(TILE_TYPE.WALL, 0, 13),
       new ShopTile(TILE_TYPE.WALL, 1, 0), new ShopTile(TILE_TYPE.AISLE, 1, 1),      new ShopTile(TILE_TYPE.AISLE, 1, 2),  new ShopTile(TILE_TYPE.AISLE, 1, 3),    new ShopTile(TILE_TYPE.AISLE, 1, 4),                   new ShopTile(TILE_TYPE.AISLE, 1, 5), new ShopTile(TILE_TYPE.AISLE, 1, 6),      new ShopTile(TILE_TYPE.AISLE, 1, 7),      new ShopTile(TILE_TYPE.AISLE, 1, 8),  new ShopTile(TILE_TYPE.AISLE, 1, 9),        new ShopTile(TILE_TYPE.AISLE, 1, 10),                 new ShopTile(TILE_TYPE.AISLE, 1, 11), new ShopTile(TILE_TYPE.AISLE, 1, 12), new ShopTile(TILE_TYPE.WALL, 1, 13),
@@ -85,7 +85,7 @@ function App() {
     rows: 14,
     columns: 14
     },
-    {id: 2, name: "Superchino", distance: "0.5km", address: "Cerrito 1320",
+    {id: 2, name: "Superchino", distance: 500, address: "Cerrito 1320",
     map: [
       new ShopTile(TILE_TYPE.WALL, 0, 0), new ShopTile(TILE_TYPE.WALL, 0, 1),       new ShopTile(TILE_TYPE.WALL, 0, 2),     new ShopTile(TILE_TYPE.WALL, 0, 3),     new ShopTile(TILE_TYPE.WALL, 0, 4),                     new ShopTile(TILE_TYPE.WALL, 0, 5),                   new ShopTile(TILE_TYPE.WALL, 0, 6),         new ShopTile(TILE_TYPE.WALL, 0, 7),       new ShopTile(TILE_TYPE.WALL, 0, 8),             new ShopTile(TILE_TYPE.WALL, 0, 9),         new ShopTile(TILE_TYPE.WALL, 0, 10),        new ShopTile(TILE_TYPE.WALL, 0, 11),      new ShopTile(TILE_TYPE.WALL, 0, 12),          new ShopTile(TILE_TYPE.WALL, 0, 13), new ShopTile(TILE_TYPE.WALL, 0, 14), new ShopTile(TILE_TYPE.WALL, 0, 15), new ShopTile(TILE_TYPE.WALL, 0, 16), new ShopTile(TILE_TYPE.WALL, 0, 17),
       new ShopTile(TILE_TYPE.WALL, 1, 0), new ShopTile(TILE_TYPE.AISLE, 1, 1),      new ShopTile(TILE_TYPE.AISLE, 1, 2),    new ShopTile(TILE_TYPE.AISLE, 1, 3),    new ShelfTile(1, 4, "Higiene", [36]),                   new ShelfTile(1, 5, "Higiene", [36]),               new ShelfTile(1, 6, "Limpieza", [3,37]),      new ShelfTile(1, 7, "Limpieza", [37]),      new ShopTile(TILE_TYPE.AISLE, 1, 8),         new ShopTile(TILE_TYPE.AISLE, 1, 9),        new ShelfTile(1, 10, "Enlatados", [17]),     new ShelfTile(1, 11, "Enlatados", [17]),     new ShelfTile(1, 12, "Enlatados", [17,22]), new ShelfTile(1, 13, "Enlatados", [17,22]), new ShopTile(TILE_TYPE.AISLE, 1, 14), new ShopTile(TILE_TYPE.AISLE, 1, 15), new ShopTile(TILE_TYPE.AISLE, 1, 16), new ShopTile(TILE_TYPE.WALL, 1, 17),

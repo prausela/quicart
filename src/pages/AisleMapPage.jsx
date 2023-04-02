@@ -32,11 +32,13 @@ const AisleMapPage = ({currentList, setCurrentList, productList, imageMap}) => {
       <Box
         sx={{
           minHeight: "30vh",
-          border: "1px solid #bdbdbd",
           marginBottom: 4
         }}
       >
-      <img src={imgSource} alt="Red dot" />
+      <img src={imgSource} alt="Red dot" style={{
+        aspectRatio: "auto",
+        height: "300px"
+      }}/>
       </Box>
       <CheckableList 
         items={currentList.products}
