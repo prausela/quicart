@@ -17,8 +17,6 @@ const EditListPage = ({ currentList, setCurrentList, productsList }) => {
   const [trigger, setTrigger] = useState(true);
   const navigate = useNavigate();
 
-  console.log(currentList);
-
   useEffect(() => {
     setTrigger(!trigger);
   }, [currentList]);
@@ -45,8 +43,14 @@ const EditListPage = ({ currentList, setCurrentList, productsList }) => {
         value={option}
         onChange={(event, newValue) => {
           setOption(newValue);
-          if (!currentList.includes(newValue)) {
-            setCurrentList([...currentList, newValue]);
+          let listName = currentList.name;
+          let currentIdList = [...currentList.products];
+
+          if (!currentIdList.includes(newValue.id)) {
+            setCurrentList({
+              name: listName,
+              products: [...currentIdList, newValue.id],
+            });
           }
         }}
         disableClearable
@@ -92,7 +96,6 @@ const EditListPage = ({ currentList, setCurrentList, productsList }) => {
                       name: listName,
                       products: listProducts,
                     });
-
                   }}
                 />
               </ListItem>
@@ -107,6 +110,7 @@ const EditListPage = ({ currentList, setCurrentList, productsList }) => {
         }}
       >
         <Button
+          disabled={currentList.products.length === 0}
           variant="outlined"
           color="secondary"
           sx={{
@@ -117,6 +121,7 @@ const EditListPage = ({ currentList, setCurrentList, productsList }) => {
           Guardar lista
         </Button>
         <Button
+          disabled={currentList.products.length === 0}
           variant="contained"
           onClick={() => navigate("/market")}
           sx={{
