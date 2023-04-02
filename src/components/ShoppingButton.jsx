@@ -4,7 +4,7 @@ const ShoppingButton = ({shopping}) => {
   return (
     <Button
       variant="contained"
-      color="secondary"
+      color={shopping.distance < 100 ? "primary" : "secondary"}
       sx={{
         width: "100%",
         py: 2,
@@ -27,7 +27,7 @@ const ShoppingButton = ({shopping}) => {
         >
             <Typography
               variant="h1"
-            >{shopping.distance}</Typography>
+            >{shopping.distance > 1000 ? (shopping.distance / 1000).toFixed(1) + "km" : shopping.distance + "m"}</Typography>
         </Box>
         <Box
           sx={{
