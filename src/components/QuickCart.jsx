@@ -1,11 +1,11 @@
 import { Box, Autocomplete } from "@mui/material";
 
-const QuickCart = () => {
+const QuickCart = ({height, width}) => {
   return (
     <Box
       sx={{
-        height: "300px",
-        width: "300px",
+        height: height ? height : "300px",
+        width: width ? width : "300px",
       }}
     >
       <img
