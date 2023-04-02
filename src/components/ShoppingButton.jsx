@@ -21,12 +21,13 @@ const ShoppingButton = ({shopping}) => {
       >
         <Box
           sx={{
-            paddingRight: 2
+            paddingRight: 2,
+            minWidth: "10%"
           }}
         >
-          <Typography
-            variant="h1"
-          >{shopping.distance}</Typography>
+            <Typography
+              variant="h1"
+            >{shopping.distance}</Typography>
         </Box>
         <Box
           sx={{

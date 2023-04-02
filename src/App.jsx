@@ -62,7 +62,9 @@ function App() {
   //productId: isChecked
   const [currentList, setCurrentList] = useState(0);
 
-  const [shoppings, setShoppings] = useState([{id: 1, name: "Carrefour Retiro", distance: "1.5km", address: "Arroyo 810",
+  const [shoppings, setShoppings] = useState([{
+    id:2, name: "Dia French", distance: "25m", address: "French 3903", map: [], products: []
+  },{id: 1, name: "Carrefour Retiro", distance: "1.5km", address: "Arroyo 810",
     map: [
       new ShopTile(TILE_TYPE.WALL, 0, 0), new ShopTile(TILE_TYPE.WALL, 0, 1),       new ShopTile(TILE_TYPE.WALL, 0, 2),   new ShopTile(TILE_TYPE.WALL, 0, 3),     new ShopTile(TILE_TYPE.WALL, 0, 4),                    new ShopTile(TILE_TYPE.WALL, 0, 5),  new ShopTile(TILE_TYPE.WALL, 0, 6),       new ShopTile(TILE_TYPE.WALL, 0, 7),       new ShopTile(TILE_TYPE.WALL, 0, 8),   new ShopTile(TILE_TYPE.WALL, 0, 9),         new ShopTile(TILE_TYPE.WALL, 0, 10),                  new ShopTile(TILE_TYPE.WALL, 0, 11),  new ShopTile(TILE_TYPE.WALL, 0, 12), new ShopTile(TILE_TYPE.WALL, 0, 13),
       new ShopTile(TILE_TYPE.WALL, 1, 0), new ShopTile(TILE_TYPE.AISLE, 1, 1),      new ShopTile(TILE_TYPE.AISLE, 1, 2),  new ShopTile(TILE_TYPE.AISLE, 1, 3),    new ShopTile(TILE_TYPE.AISLE, 1, 4),                   new ShopTile(TILE_TYPE.AISLE, 1, 5), new ShopTile(TILE_TYPE.AISLE, 1, 6),      new ShopTile(TILE_TYPE.AISLE, 1, 7),      new ShopTile(TILE_TYPE.AISLE, 1, 8),  new ShopTile(TILE_TYPE.AISLE, 1, 9),        new ShopTile(TILE_TYPE.AISLE, 1, 10),                 new ShopTile(TILE_TYPE.AISLE, 1, 11), new ShopTile(TILE_TYPE.AISLE, 1, 12), new ShopTile(TILE_TYPE.WALL, 1, 13),
@@ -80,7 +82,10 @@ function App() {
       new ShopTile(TILE_TYPE.WALL, 13, 0), new ShopTile(TILE_TYPE.WALL, 13, 1),     new ShopTile(TILE_TYPE.WALL, 13, 2),  new ShopTile(TILE_TYPE.WALL, 13, 3),    new ShopTile(TILE_TYPE.EE, 13, 4),                    new ShopTile(TILE_TYPE.WALL, 13, 5),  new ShopTile(TILE_TYPE.WALL, 13, 6),      new ShopTile(TILE_TYPE.WALL, 13, 7),      new ShopTile(TILE_TYPE.WALL, 13, 8),  new ShopTile(TILE_TYPE.EE, 13, 9),          new ShopTile(TILE_TYPE.WALL, 13, 10),                 new ShopTile(TILE_TYPE.WALL, 13, 11), new ShopTile(TILE_TYPE.WALL, 13, 12), new ShopTile(TILE_TYPE.WALL, 13, 13)
     ],
     products: [1,2,3,4,6,7,9,10,12,13,14,15,16,17,18,20,22,23,24,28,30,31,32,33,36,37,39,40]
-    }]);
+    },
+    {
+      id:3, name: "Vital Almagro", distance: "4.5km", address: "Av. Diaz Velez 5070", map: [], products: []
+    },]);
 
   return (
     <InterfaceController 
