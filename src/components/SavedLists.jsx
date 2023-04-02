@@ -4,7 +4,7 @@ import { theme } from '../styles/theme';
 const SavedLists = ({ lists }) => {
     return (
         <List>
-            {lists.map((list) => (
+            {lists.map((elem) => (
                 <Typography variant="h2" sx={{
                     border: '1px solid black',
                     height: '50px',
@@ -25,7 +25,7 @@ const SavedLists = ({ lists }) => {
                     py={1}
                     px={2}
                     my={1}
-                >{list}</Typography>
+                >{elem.name}</Typography>
             ))}
         </List>
 
