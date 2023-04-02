@@ -1,7 +1,11 @@
 import { Box, Typography, List, Button } from "@mui/material";
-import { theme } from "../styles/theme";
+import { useNavigate } from "react-router-dom";
 
-const SavedLists = ({ lists, setCurrentList }) => {
+const SavedLists = ({ lists, currentList, setCurrentList }) => {
+  const navigate = useNavigate();
+
+  console.log(currentList);
+
   return (
     <List
       sx={{
@@ -20,7 +24,10 @@ const SavedLists = ({ lists, setCurrentList }) => {
             py: 2,
             my: 1,
           }}
-          onClick={() => setCurrentList(elem)}
+          onClick={() => {
+            setCurrentList(elem);
+            navigate("/list");
+          }}
           key={index}
         >
           {elem.name}
