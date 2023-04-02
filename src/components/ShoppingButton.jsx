@@ -1,6 +1,8 @@
 import { Box, Button, Typography } from "@mui/material";
+import { useNavigate } from 'react-router-dom';
 
 const ShoppingButton = ({shopping}) => {
+  const navigate = useNavigate();
   return (
     <Button
       variant="contained"
@@ -10,7 +12,7 @@ const ShoppingButton = ({shopping}) => {
         py: 2,
         my: 1,
       }}
-      onClick={() => console.log("Holi")}
+      onClick={() => navigate("/map")}
       key={shopping.id}
     >
       <Box
