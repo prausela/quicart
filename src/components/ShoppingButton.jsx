@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 
-const ShoppingButton = ({shopping, currentList}) => {
+const ShoppingButton = ({shopping, currentList, setImageMap}) => {
   const navigate = useNavigate();
 
   const getMap = () => {
@@ -12,19 +12,20 @@ const ShoppingButton = ({shopping, currentList}) => {
         'Access-Control-Allow-Origin': '*',
       },
       body: JSON.stringify({
-        shoppingList: Object.keys(currentList),
+        shoppingList: currentList.products,
         shopMap: shopping.map,
-        N: shopping.rows,
-        M: shopping.columns,
+        rows: shopping.rows,
+        columns: shopping.columns,
       }),
     };
 
     fetch("https://spicasso.pythonanywhere.com/", requestOptions)
-      .then(response => {
-        console.log(response.text());
-        navigate("/map");
-      })
-      .catch(error => console.log('error', error));
+    .then(response => response.text())
+    .then(result => {
+      setImageMap(result);
+      navigate("/map");
+    })
+    .catch(error => console.log('error', error));
   }
 
   return (

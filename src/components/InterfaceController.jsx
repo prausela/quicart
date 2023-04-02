@@ -13,6 +13,8 @@ const InterfaceController = ({
   setCurrentList,
   shoppings,
   setShoppings,
+  imageMap,
+  setImageMap
 }) => {
   return (
     <Router>
@@ -46,6 +48,7 @@ const InterfaceController = ({
                 shoppings={shoppings}
                 setShoppings={setShoppings}
                 currentList={currentList}
+                setImageMap={setImageMap}
               />
             }
           />
@@ -56,6 +59,7 @@ const InterfaceController = ({
                 currentList={currentList}
                 setCurrentList={setCurrentList}
                 productList={productList}
+                imageMap={imageMap}
               />
             }
           />

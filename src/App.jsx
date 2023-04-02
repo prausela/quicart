@@ -62,6 +62,8 @@ function App() {
   //productId: isChecked
   const [currentList, setCurrentList] = useState([]);
 
+  const [imageMap, setImageMap] = useState('');
+
   const [shoppings, setShoppings] = useState([{id: 1, name: "Carrefour Retiro", distance: "1.5km", address: "Arroyo 810",
     map: [
       new ShopTile(TILE_TYPE.WALL, 0, 0), new ShopTile(TILE_TYPE.WALL, 0, 1),       new ShopTile(TILE_TYPE.WALL, 0, 2),   new ShopTile(TILE_TYPE.WALL, 0, 3),     new ShopTile(TILE_TYPE.WALL, 0, 4),                    new ShopTile(TILE_TYPE.WALL, 0, 5),  new ShopTile(TILE_TYPE.WALL, 0, 6),       new ShopTile(TILE_TYPE.WALL, 0, 7),       new ShopTile(TILE_TYPE.WALL, 0, 8),   new ShopTile(TILE_TYPE.WALL, 0, 9),         new ShopTile(TILE_TYPE.WALL, 0, 10),                  new ShopTile(TILE_TYPE.WALL, 0, 11),  new ShopTile(TILE_TYPE.WALL, 0, 12), new ShopTile(TILE_TYPE.WALL, 0, 13),
@@ -121,6 +123,8 @@ function App() {
       setCurrentList={setCurrentList}
       shoppings={shoppings}
       setShoppings={setShoppings}
+      imageMap={imageMap}
+      setImageMap={setImageMap}
     />
   );
 }

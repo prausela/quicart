@@ -1,9 +1,117 @@
+from flask import Flask
+from flask import request
+from flask import send_file
+from flask_cors import CORS, cross_origin
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import colors
 from heapq import heappush, heappop
 import random
+from io import BytesIO
+import base64
+app = Flask(__name__)
+cors = CORS(app)
 
+@app.route('/', methods=['GET', 'POST'])
+@cross_origin()
+def hello_world():
+    request_data = request.get_json()
+    shoppingList = request_data['shoppingList']
+    shopMap = request_data['shopMap']
+    N = 20
+    M = 20
+    items = []
+    entrances = []
+    cashiers =[]
+    array = np.zeros((N,M))
+    for i in shopMap:
+        array[i["row"]][i["column"]] = i["type"]
+        if(i["type"] == 2):
+            intersection = set(i["products"]).intersection(set(shoppingList))
+            if(len(list(intersection)) > 0):
+                items.append((i["row"], i["column"]))
+                shoppingList = list(set(shoppingList) - intersection)
+        elif(i["type"] == 3):
+            entrances.append((i["row"], i["column"]))
+        elif(i["type"] == 4):
+            cashiers.append((i["row"], i["column"]))
+
+# 0 -> empty
+# 1 -> wall
+# 2 -> shelf
+# 3 -> entrance
+# 4 -> cashier
+# 5 -> item
+# 6 -> path
+
+
+    cmap = colors.ListedColormap(['white','black','grey','green','blue', 'red','orange'])
+    norm = colors.BoundaryNorm(np.arange(0,8,1), cmap.N)
+
+
+    items_left=items.copy()
+    ordered_items = []
+    path = [entrances[0]] #CAMBIAR
+
+    while len(items_left) > 0:
+        next_item, next_path = next_point_a_star(array, path[-1], items_left)
+        path += next_path
+        items_left.remove(next_item)
+        ordered_items.append(next_item)
+
+    cashier, cashier_path = next_point_a_star(array, path[-1], cashiers)
+    path += cashier_path
+    entrance, entrance_path = next_point_a_star(array, path[-1], entrances)
+    path += entrance_path
+
+    for point in path:
+        array[point[0], point[1]] = 6
+
+
+    for i in range(len(path)-1):
+        plt.arrow(path[i][1], path[i][0], path[i+1][1]-path[i][1], path[i+1][0]-path[i][0],
+                head_width=.3, head_length=.3, fc='k', ec='k', color='orange',
+                length_includes_head=True, shape='full', overhang=0.5)
+
+    for item in items:
+        array[item[0], item[1]] = 5
+    for cashier in cashiers:
+        array[cashier[0], cashier[1]] = 4
+    for entrance in entrances:
+        array[entrance[0], entrance[1]] = 3
+
+    for i, item in enumerate(ordered_items):
+        plt.text(item[1], item[0], i+1, color='w', ha='center', va='center')
+
+    plt.imshow(array, cmap=cmap, norm=norm, interpolation='nearest')
+    plt.xticks(np.arange(0,N,1))
+    plt.yticks(np.arange(0,N,1))
+    plt.title('Supermercado', fontsize=16)
+    plt.legend(handles=[plt.Rectangle((0,0),1,1,fc=cmap(0)),
+                    plt.Rectangle((0,0),1,1,fc=cmap(1)),
+                    plt.Rectangle((0,0),1,1,fc=cmap(2)),
+                    plt.Rectangle((0,0),1,1,fc=cmap(3)),
+                    plt.Rectangle((0,0),1,1,fc=cmap(4)),
+                    plt.Rectangle((0,0),1,1,fc=cmap(5)),
+                    plt.Rectangle((0,0),1,1,fc=cmap(6))],
+                labels=['Pasillo','Pared','Góndola','Entrada/salida','Caja','Producto','Camino'],
+                loc='lower left', bbox_to_anchor=(1.05, .3), fontsize=14)
+
+    plt.tick_params(
+        axis='both',
+        which='both',
+        bottom=False,
+        top=False,
+        left=False,
+        right=False,
+        labelbottom=False,
+        labelleft=False)
+
+    #plt.figure(figsize=(500, 500))
+
+    image = BytesIO()
+    plt.savefig(image, format='png')
+    return base64.encodebytes(image.getvalue())
 
 def heuristic(node, goal):
     return abs(node[0] - goal[0]) + abs(node[1] - goal[1])
@@ -28,9 +136,9 @@ def a_star(grid, start, end):
         open_set.remove(current)
         closed_set.add(current)
 
-        neighbors = [(current[0] - 1, current[1]), 
-                     (current[0] + 1, current[1]), 
-                     (current[0], current[1] - 1), 
+        neighbors = [(current[0] - 1, current[1]),
+                     (current[0] + 1, current[1]),
+                     (current[0], current[1] - 1),
                      (current[0], current[1] + 1)]
 
         for neighbor in neighbors:
@@ -67,124 +175,3 @@ def next_point_a_star(grid, start, points):
             closest_point = point
             min_path = path
     return closest_point, min_path
-
-
-N=18
-array = np.zeros((N,N))
-
-# 0 -> empty
-# 1 -> wall
-# 2 -> shelf
-# 3 -> entrance
-# 4 -> cashier
-# 5 -> item
-# 6 -> path
-
-cmap = colors.ListedColormap(['white','black','grey','green','blue', 'red','orange'])
-norm = colors.BoundaryNorm(np.arange(0,8,1), cmap.N)
-
-#walls
-array[0,:] = 1
-array[-1,:] = 1
-array[:,0] = 1
-array[:,-1] = 1
-walls = [tuple(x) for x in np.argwhere(array == 1)]
-
-#entrance
-array[-1,5] = 3
-array[-1,12] = 3
-entrances = [tuple(x) for x in np.argwhere(array == 3)]
-
-#horizontal shelves
-array[1,4:8] = 2
-array[1,11:15] = 2
-array[4,4:15] = 2
-array[5,4:15] = 2
-#vertical shelves
-array[4:13,1] = 2
-array[4:13,16] = 2
-array[8:13,4] = 2
-array[8:13,5] = 2
-array[8:13,8] = 2
-array[8:13,9] = 2
-array[8:13,12] = 2
-array[8:13,13] = 2
-
-shelves = [tuple(x) for x in np.argwhere(array == 2)]
-
-#cashier
-array[15,4] = 4
-array[15,7] = 4
-array[15,10] = 4
-array[15,13] = 4
-cashiers = [tuple(x) for x in np.argwhere(array == 4)]
-
-
-copy_array = array.copy()
-items = random.sample(shelves, 5) #CAMBIAR
-
-items_left=items.copy()
-ordered_items = []
-path = [tuple(entrances[1])] #CAMBIAR
-
-while len(items_left) > 0:
-    next_item, next_path = next_point_a_star(copy_array, path[-1], items_left)
-    path += next_path
-    items_left.remove(next_item)
-    ordered_items.append(next_item)
-
-
-cashier, cashier_path = next_point_a_star(copy_array, path[-1], cashiers)
-path += cashier_path
-
-entrance, entrance_path = next_point_a_star(copy_array, path[-1], entrances)
-path += entrance_path
-    
-
-for point in path:
-    copy_array[point[0], point[1]] = 6
-
-
-for i in range(len(path)-1):
-    plt.arrow(path[i][1], path[i][0], path[i+1][1]-path[i][1], path[i+1][0]-path[i][0],
-                head_width=.3, head_length=.3, fc='k', ec='k', color='orange',
-                length_includes_head=True, shape='full', overhang=0.5)
-    
-    
-for item in items:
-    copy_array[item[0], item[1]] = 5
-for cashier in cashiers:
-    copy_array[cashier[0], cashier[1]] = 4
-for entrance in entrances:
-    copy_array[entrance[0], entrance[1]] = 3
-
-for i, item in enumerate(ordered_items):
-    plt.text(item[1], item[0], i+1, color='w', ha='center', va='center')  
-
-
-plt.imshow(copy_array, cmap=cmap, norm=norm, interpolation='nearest')
-plt.xticks(np.arange(0,N,1))
-plt.yticks(np.arange(0,N,1))
-plt.title('Supermercado', fontsize=16)
-plt.legend(handles=[plt.Rectangle((0,0),1,1,fc=cmap(0)),
-                    plt.Rectangle((0,0),1,1,fc=cmap(1)),
-                    plt.Rectangle((0,0),1,1,fc=cmap(2)),
-                    plt.Rectangle((0,0),1,1,fc=cmap(3)),
-                    plt.Rectangle((0,0),1,1,fc=cmap(4)),
-                    plt.Rectangle((0,0),1,1,fc=cmap(5)),
-                    plt.Rectangle((0,0),1,1,fc=cmap(6))],
-                labels=['Vacío','Pared','Góndola','Entrada/salida','Caja','Producto','Camino'],
-                loc='lower left', bbox_to_anchor=(1.05, .3), fontsize=14)
-
-plt.tick_params(
-    axis='both',          
-    which='both',      
-    bottom=False,      
-    top=False,         
-    left=False,
-    right=False,
-    labelbottom=False,
-    labelleft=False)
-
-
-plt.show()

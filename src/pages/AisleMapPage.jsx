@@ -4,8 +4,9 @@ import QuickCart from "../components/QuickCart";
 import { grey } from "@mui/material/colors";
 import { useNavigate } from "react-router-dom";
 
-const AisleMapPage = ({currentList, setCurrentList, productList}) => {
+const AisleMapPage = ({currentList, setCurrentList, productList, imageMap}) => {
   const navigate = useNavigate();
+  const imgSource = "data:image/png;base64, " + imageMap;
   return (
     <Box
       sx={{
@@ -35,9 +36,7 @@ const AisleMapPage = ({currentList, setCurrentList, productList}) => {
           marginBottom: 4
         }}
       >
-        <img
-          src="."
-        />
+      <img src={imgSource} alt="Red dot" />
       </Box>
       <CheckableList 
         items={currentList.products}
