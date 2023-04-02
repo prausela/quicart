@@ -44,9 +44,16 @@ const EditListPage = ({ currentList, setCurrentList, productsList }) => {
         )}
         value={option}
         onChange={(event, newValue) => {
+          console.log(newValue);
           setOption(newValue);
-          if (!currentList.includes(newValue)) {
-            setCurrentList([...currentList, newValue]);
+          let listName = currentList.name;
+          let currentIdList = [...currentList.products];
+
+          if (!currentIdList.includes(newValue.id)) {
+            setCurrentList({
+              name: listName,
+              products: [...currentIdList, newValue.id],
+            });
           }
         }}
         disableClearable
@@ -92,7 +99,6 @@ const EditListPage = ({ currentList, setCurrentList, productsList }) => {
                       name: listName,
                       products: listProducts,
                     });
-
                   }}
                 />
               </ListItem>
