@@ -89,10 +89,15 @@ function App() {
     },]);
 
   return (
-    <EditListPage
+    <InterfaceController 
+      productList={productList}
+      setProductList={setProductList}
+      shoppingLists={shoppingLists}
+      setShoppingLists={setShoppingLists}
       currentList={currentList}
       setCurrentList={setCurrentList}
-      productsList={productList}
+      shoppings={shoppings}
+      setShoppings={setShoppings}
     />
   );
 }

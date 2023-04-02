@@ -1,6 +1,7 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import ListSelectionPage from "../pages/ListSelectionPage";
 import MarketSelectionPage from "../pages/MarketSelectionPage";
+import AisleMapPage from "../pages/AisleMapPage";
 
 const InterfaceController = ({shoppingLists, setCurrentList, shoppings, setShoppings}) => {
 
@@ -19,6 +20,9 @@ const InterfaceController = ({shoppingLists, setCurrentList, shoppings, setShopp
               shoppings={shoppings}
               setShoppings={setShoppings}
             />
+          }/>
+          <Route path="/map" element={
+            <AisleMapPage />
           }/>
         </Route>
       </Routes>
