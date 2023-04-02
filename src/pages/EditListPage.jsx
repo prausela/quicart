@@ -113,6 +113,7 @@ const EditListPage = ({ currentList, setCurrentList, productsList }) => {
         }}
       >
         <Button
+          disabled={currentList.products.length === 0}
           variant="outlined"
           color="secondary"
           sx={{
@@ -123,6 +124,7 @@ const EditListPage = ({ currentList, setCurrentList, productsList }) => {
           Guardar lista
         </Button>
         <Button
+          disabled={currentList.products.length === 0}
           variant="contained"
           onClick={() => navigate("/market")}
           sx={{
