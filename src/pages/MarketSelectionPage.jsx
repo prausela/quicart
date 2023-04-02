@@ -9,7 +9,7 @@ const MarketSelectionPage = ({currentList, shoppings, setShoppings}) => {
     if (a.distance < b.distance) return -1;
     return 0;
   }));
-  
+
   const [filteringKeyWord, setFilteringKeyWord] = useState("");
 
   useEffect(() => {
@@ -62,7 +62,7 @@ const MarketSelectionPage = ({currentList, shoppings, setShoppings}) => {
           />
         ))
       }
-      </List>      
+      </List>
     </Box>
   )
 }
