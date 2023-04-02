@@ -1,16 +1,20 @@
 import { Box, Typography, List, Button } from "@mui/material";
-import { theme } from "../styles/theme";
+import { useNavigate } from "react-router-dom";
 
-const SavedLists = ({ lists, setCurrentList }) => {
+const SavedLists = ({ lists, currentList, setCurrentList }) => {
+  const navigate = useNavigate();
+
   return (
     <List
       sx={{
         width: "100%",
       }}
     >
-      <Typography variant="body1" color="neutral.main" p={1}>
-        Listas de compras guardadas
-      </Typography>
+      {lists.length > 0 && (
+        <Typography variant="body1" color="neutral.main" p={1}>
+          Listas de compras guardadas
+        </Typography>
+      )}
       {lists.map((elem, index) => (
         <Button
           variant="contained"
@@ -20,7 +24,10 @@ const SavedLists = ({ lists, setCurrentList }) => {
             py: 2,
             my: 1,
           }}
-          onClick={() => setCurrentList(elem)}
+          onClick={() => {
+            setCurrentList(elem);
+            navigate("/list");
+          }}
           key={index}
         >
           {elem.name}

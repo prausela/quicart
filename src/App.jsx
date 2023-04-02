@@ -60,7 +60,7 @@ function App() {
   ]);
 
   //productId: isChecked
-  const [currentList, setCurrentList] = useState(0);
+  const [currentList, setCurrentList] = useState([]);
 
   const [shoppings, setShoppings] = useState([{id: 1, name: "Carrefour Retiro", distance: "1.5km", address: "Arroyo 810",
     map: [
@@ -107,7 +107,7 @@ function App() {
   ]);
 
   return (
-    <InterfaceController 
+    <InterfaceController
       productList={productList}
       setProductList={setProductList}
       shoppingLists={shoppingLists}
