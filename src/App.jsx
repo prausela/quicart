@@ -3,6 +3,7 @@ import { ShopTile } from "./tiles/tile";
 import { ShelfTile } from "./tiles/shelfTile";
 import { TILE_TYPE } from "./tiles/tileType";
 import InterfaceController from "./components/InterfaceController";
+import EditListPage from "./pages/EditListPage";
 
 function App() {
   const [productList, setProductList] = useState([
@@ -60,7 +61,7 @@ function App() {
   ]);
 
   //productId: isChecked
-  const [currentList, setCurrentList] = useState(0);
+  const [currentList, setCurrentList] = useState([]);
 
   const [shoppings, setShoppings] = useState([
     {
@@ -89,15 +90,10 @@ function App() {
   ]);
 
   return (
-    <InterfaceController 
-      productList={productList}
-      setProductList={setProductList}
-      shoppingLists={shoppingLists}
-      setShoppingLists={setShoppingLists}
+    <EditListPage
       currentList={currentList}
       setCurrentList={setCurrentList}
-      shoppings={shoppings}
-      setShoppings={setShoppings}
+      productsList={productList}
     />
   );
 }

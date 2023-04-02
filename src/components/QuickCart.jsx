@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Autocomplete } from "@mui/material";
 
 const QuickCart = () => {
   return (
