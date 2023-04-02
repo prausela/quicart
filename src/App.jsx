@@ -86,7 +86,11 @@ function App() {
     },
     {
       id:3, name: "Vital Almagro", distance: 4500, address: "Av. Diaz Velez 5070", map: [], products: []
-    },]);
+    }, {
+      id:4, name: "Coto Pueyrredon", distance: 700, address: "French 2417", map: [], products: []
+    },  {
+      id:5, name: "Jumbo Las Heras", distance: 1700, address: "Av. Gral. Las Heras 2564", map: [], products: []
+    }]);
 
   return (
     <InterfaceController 

@@ -22,7 +22,7 @@ const ShoppingButton = ({shopping}) => {
         <Box
           sx={{
             paddingRight: 2,
-            minWidth: "10%"
+            minWidth: "20%"
           }}
         >
             <Typography

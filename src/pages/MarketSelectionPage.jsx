@@ -1,10 +1,15 @@
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, List, TextField } from "@mui/material";
 import QuickCart from "../components/QuickCart";
 import ShoppingButton from "../components/ShoppingButton";
 import { useEffect, useState } from "react";
 
 const MarketSelectionPage = ({shoppings, setShoppings}) => {
-  const [filteredShoppings, setFilteredShoppings] = useState(shoppings);
+  const [filteredShoppings, setFilteredShoppings] = useState(shoppings.sort((a, b) => {
+    if (a.distance > b.distance) return 1;
+    if (a.distance < b.distance) return -1;
+    return 0;
+  }));
+  
   const [filteringKeyWord, setFilteringKeyWord] = useState("");
 
   useEffect(() => {
@@ -17,6 +22,7 @@ const MarketSelectionPage = ({shoppings, setShoppings}) => {
         display: "flex",
         flexDirection: "column",
         minHeight: "100vh",
+        maxHeight: "100vh",
         width: "90vw",
         margin: "auto"
       }}
@@ -41,6 +47,12 @@ const MarketSelectionPage = ({shoppings, setShoppings}) => {
           }}
         />
       </Box>
+      <List
+        sx={{
+          overflow: "auto",
+          marginBottom: "4rem"
+        }}
+      >
       {
         filteredShoppings.map(shopping => (
           <ShoppingButton
@@ -49,7 +61,7 @@ const MarketSelectionPage = ({shoppings, setShoppings}) => {
           />
         ))
       }
-      
+      </List>      
     </Box>
   )
 }
