@@ -10,10 +10,12 @@ import {
 import { useState, useEffect } from "react";
 import QuickCart from "../components/QuickCart";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { useNavigate } from "react-router-dom";
 
 const EditListPage = ({ currentList, setCurrentList, productsList }) => {
   const [option, setOption] = useState(null);
   const [trigger, setTrigger] = useState(true);
+  const navigate = useNavigate();
 
   console.log(currentList);
 
@@ -90,7 +92,7 @@ const EditListPage = ({ currentList, setCurrentList, productsList }) => {
                       name: listName,
                       products: listProducts,
                     });
-                    
+
                   }}
                 />
               </ListItem>
@@ -116,6 +118,7 @@ const EditListPage = ({ currentList, setCurrentList, productsList }) => {
         </Button>
         <Button
           variant="contained"
+          onClick={() => navigate("/market")}
           sx={{
             width: "48%",
             py: 1,
