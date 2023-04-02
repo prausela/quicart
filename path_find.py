@@ -18,8 +18,8 @@ def hello_world():
     request_data = request.get_json()
     shoppingList = request_data['shoppingList']
     shopMap = request_data['shopMap']
-    N = 20
-    M = 20
+    N = request_data['rows']
+    M = request_data['columns']
     items = []
     entrances = []
     cashiers =[]
@@ -86,16 +86,6 @@ def hello_world():
     plt.imshow(array, cmap=cmap, norm=norm, interpolation='nearest')
     plt.xticks(np.arange(0,N,1))
     plt.yticks(np.arange(0,N,1))
-    plt.title('Supermercado', fontsize=16)
-    plt.legend(handles=[plt.Rectangle((0,0),1,1,fc=cmap(0)),
-                    plt.Rectangle((0,0),1,1,fc=cmap(1)),
-                    plt.Rectangle((0,0),1,1,fc=cmap(2)),
-                    plt.Rectangle((0,0),1,1,fc=cmap(3)),
-                    plt.Rectangle((0,0),1,1,fc=cmap(4)),
-                    plt.Rectangle((0,0),1,1,fc=cmap(5)),
-                    plt.Rectangle((0,0),1,1,fc=cmap(6))],
-                labels=['Pasillo','Pared','Góndola','Entrada/salida','Caja','Producto','Camino'],
-                loc='lower left', bbox_to_anchor=(1.05, .3), fontsize=14)
 
     plt.tick_params(
         axis='both',
