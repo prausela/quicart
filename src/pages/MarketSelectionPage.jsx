@@ -3,7 +3,7 @@ import QuickCart from "../components/QuickCart";
 import ShoppingButton from "../components/ShoppingButton";
 import { useEffect, useState } from "react";
 
-const MarketSelectionPage = ({shoppings, setShoppings}) => {
+const MarketSelectionPage = ({currentList, shoppings, setShoppings}) => {
   const [filteredShoppings, setFilteredShoppings] = useState(shoppings.sort((a, b) => {
     if (a.distance > b.distance) return 1;
     if (a.distance < b.distance) return -1;
@@ -58,6 +58,7 @@ const MarketSelectionPage = ({shoppings, setShoppings}) => {
           <ShoppingButton
             shopping={shopping}
             key={shopping.id}
+            currentList={currentList}
           />
         ))
       }

@@ -1,7 +1,7 @@
 export const TILE_TYPE = {
-    EE: "EXIT/ENTRANCE",
-    AISLE: "AISLE",
-    WALL: "WALL",
-    SHELF: "SHELF",
-    REG: "CASH REGISTER"
+    EE: 3,
+    AISLE: 0,
+    WALL: 1,
+    SHELF: 2,
+    REG: 4
 }

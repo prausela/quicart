@@ -1,8 +1,32 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
 
-const ShoppingButton = ({shopping}) => {
+const ShoppingButton = ({shopping, currentList}) => {
   const navigate = useNavigate();
+
+  const getMap = () => {
+    var requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify({
+        shoppingList: Object.keys(currentList),
+        shopMap: shopping.map,
+        N: shopping.rows,
+        M: shopping.columns,
+      }),
+    };
+
+    fetch("https://spicasso.pythonanywhere.com/", requestOptions)
+      .then(response => {
+        console.log(response.text());
+        navigate("/map");
+      })
+      .catch(error => console.log('error', error));
+  }
+
   return (
     <Button
       variant="contained"
@@ -12,7 +36,7 @@ const ShoppingButton = ({shopping}) => {
         py: 2,
         my: 1,
       }}
-      onClick={() => navigate("/map")}
+      onClick={() => getMap()}
       key={shopping.id}
     >
       <Box

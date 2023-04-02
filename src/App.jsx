@@ -79,7 +79,9 @@ function App() {
       new ShopTile(TILE_TYPE.WALL, 12, 0), new ShopTile(TILE_TYPE.AISLE, 12, 1),    new ShopTile(TILE_TYPE.AISLE, 12, 2), new ShopTile(TILE_TYPE.AISLE, 12, 3),   new ShopTile(TILE_TYPE.AISLE, 12, 4),                 new ShopTile(TILE_TYPE.AISLE, 12, 5), new ShopTile(TILE_TYPE.AISLE, 12, 6),     new ShopTile(TILE_TYPE.AISLE, 12, 7),     new ShopTile(TILE_TYPE.AISLE, 12, 8), new ShopTile(TILE_TYPE.AISLE, 12, 9),       new ShopTile(TILE_TYPE.AISLE, 12, 10),                new ShopTile(TILE_TYPE.AISLE, 12, 11), new ShopTile(TILE_TYPE.AISLE, 12, 12), new ShopTile(TILE_TYPE.WALL, 12, 13),
       new ShopTile(TILE_TYPE.WALL, 13, 0), new ShopTile(TILE_TYPE.WALL, 13, 1),     new ShopTile(TILE_TYPE.WALL, 13, 2),  new ShopTile(TILE_TYPE.WALL, 13, 3),    new ShopTile(TILE_TYPE.EE, 13, 4),                    new ShopTile(TILE_TYPE.WALL, 13, 5),  new ShopTile(TILE_TYPE.WALL, 13, 6),      new ShopTile(TILE_TYPE.WALL, 13, 7),      new ShopTile(TILE_TYPE.WALL, 13, 8),  new ShopTile(TILE_TYPE.EE, 13, 9),          new ShopTile(TILE_TYPE.WALL, 13, 10),                 new ShopTile(TILE_TYPE.WALL, 13, 11), new ShopTile(TILE_TYPE.WALL, 13, 12), new ShopTile(TILE_TYPE.WALL, 13, 13)
     ],
-    products: [1,2,3,4,6,7,9,10,12,13,14,15,16,17,18,20,22,23,24,28,30,31,32,33,36,37,39,40]
+    products: [1,2,3,4,6,7,9,10,12,13,14,15,16,17,18,20,22,23,24,28,30,31,32,33,36,37,39,40],
+    rows: 14,
+    columns: 14
     },
     {id: 2, name: "Superchino", distance: "0.5km", address: "Cerrito 1320",
     map: [
@@ -102,7 +104,10 @@ function App() {
       new ShopTile(TILE_TYPE.WALL, 16, 0), new ShopTile(TILE_TYPE.AISLE, 16, 1),     new ShopTile(TILE_TYPE.AISLE, 16, 2),  new ShopTile(TILE_TYPE.AISLE, 16, 3),    new ShopTile(TILE_TYPE.AISLE, 16, 4),                    new ShopTile(TILE_TYPE.AISLE, 16, 5),               new ShopTile(TILE_TYPE.AISLE, 16, 6),      new ShopTile(TILE_TYPE.AISLE, 16, 7),      new ShopTile(TILE_TYPE.AISLE, 16, 8),       new ShopTile(TILE_TYPE.AISLE, 16, 9),          new ShopTile(TILE_TYPE.AISLE, 15, 10),        new ShopTile(TILE_TYPE.AISLE, 16, 11),  new ShopTile(TILE_TYPE.AISLE, 16, 12),      new ShopTile(TILE_TYPE.AISLE, 16, 13), new ShopTile(TILE_TYPE.AISLE, 16, 14), new ShopTile(TILE_TYPE.AISLE, 16, 15), new ShopTile(TILE_TYPE.AISLE, 16, 16), new ShopTile(TILE_TYPE.WALL, 16, 17),
       new ShopTile(TILE_TYPE.WALL, 17, 0), new ShopTile(TILE_TYPE.WALL, 17, 1),     new ShopTile(TILE_TYPE.WALL, 17, 2),    new ShopTile(TILE_TYPE.WALL, 17, 3),    new ShopTile(TILE_TYPE.WALL, 17, 4),                    new ShopTile(TILE_TYPE.EE, 17, 5),                 new ShopTile(TILE_TYPE.WALL, 17, 6),         new ShopTile(TILE_TYPE.WALL, 17, 7),          new ShopTile(TILE_TYPE.WALL, 17, 8),      new ShopTile(TILE_TYPE.WALL, 17, 9),          new ShopTile(TILE_TYPE.WALL, 17, 10),          new ShopTile(TILE_TYPE.WALL, 17, 11),  new ShopTile(TILE_TYPE.EE, 17, 12),          new ShopTile(TILE_TYPE.WALL, 17, 13), new ShopTile(TILE_TYPE.WALL, 17, 14), new ShopTile(TILE_TYPE.WALL, 17, 15), new ShopTile(TILE_TYPE.WALL, 17, 16), new ShopTile(TILE_TYPE.WALL, 17, 17)
     ],
-    products: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40]    },
+    products: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40],
+    rows: 18,
+    columns: 18
+  },
   
   ]);
 

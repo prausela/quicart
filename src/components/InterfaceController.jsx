@@ -45,6 +45,7 @@ const InterfaceController = ({
               <MarketSelectionPage
                 shoppings={shoppings}
                 setShoppings={setShoppings}
+                currentList={currentList}
               />
             }
           />
