@@ -5,7 +5,7 @@ import { ShelfTile } from "./tiles/shelfTile";
 import { TILE_TYPE } from "./tiles/tileType";
 import SavedLists from "./components/SavedLists";
 import { Box } from "@mui/system";
-import  QuickCart  from "./components/QuickCart";
+import QuickCart from "./components/QuickCart";
 
 function App() {
   const [productList, setProductList] = useState([
@@ -98,17 +98,18 @@ function App() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        height: "100vh",
+        minHeight: "60vh",
         width: "90vw",
-        margin: "0 auto",
+        margin: "auto",
       }}
     >
-      <QuickCart/>
+      <QuickCart />
       <Button
         variant="contained"
         sx={{
           width: "100%",
           py: 2,
+          my: 4,
         }}
         onClick={() => console.log("holi")}
       >

@@ -6,11 +6,11 @@ const QuickCart = () => {
       <Typography
         variant="h1"
         sx={{
-          fontWeight: "900",
-          color: "neutral.main",
+          fontWeight: "bold",
+          color: "neutral.dark",
         }}
       >
-        quickart
+        QUICK CART
       </Typography>
     </>
   );
