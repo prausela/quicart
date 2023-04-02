@@ -1,4 +1,5 @@
 import { Box, Autocomplete } from "@mui/material";
+import logo from '/images/pwa/logo.png';
 
 const QuickCart = ({height, width}) => {
   return (
@@ -10,7 +11,7 @@ const QuickCart = ({height, width}) => {
     >
       <img
         style={{ width: "100%", height: "100%", objectFit: "contain" }}
-        src="../../public/images/pwa/logo.png"
+        src={logo}
         alt="logo"
       />
     </Box>
