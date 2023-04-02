@@ -1,9 +1,11 @@
-import { Box, List } from "@mui/material";
+import { Box, Button, List, Typography } from "@mui/material";
 import CheckableList from "../components/CheckableList";
 import QuickCart from "../components/QuickCart";
 import { grey } from "@mui/material/colors";
+import { useNavigate } from "react-router-dom";
 
 const AisleMapPage = ({currentList, setCurrentList, productList}) => {
+  const navigate = useNavigate();
   return (
     <Box
       sx={{
@@ -41,9 +43,19 @@ const AisleMapPage = ({currentList, setCurrentList, productList}) => {
         items={currentList.products}
         productList={productList}
         myStyle={{
-          marginBottom: "4rem"
+          marginBottom: "2.5rem",
+          flexGrow: 1
         }}
       />
+      <Button
+        variant="contained"
+        sx={{
+          my: 4
+        }}
+        onClick={() => navigate("/")}
+      >
+        <Typography variant="h2">Finalizar Compra</Typography>
+      </Button>
     </Box>
   )
 }
