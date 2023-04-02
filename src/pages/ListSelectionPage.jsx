@@ -3,7 +3,7 @@ import QuickCart from "../components/QuickCart";
 import SavedLists from "../components/SavedLists";
 import { Link } from "react-router-dom";
 
-const ListSelectionPage = ({ shoppingLists, setCurrentList }) => {
+const ListSelectionPage = ({ shoppingLists, setCurrentList, currentList}) => {
   return (
     <Box
       sx={{
@@ -30,7 +30,7 @@ const ListSelectionPage = ({ shoppingLists, setCurrentList }) => {
           Nueva lista de compras
         </Button>
       </Link>
-      <SavedLists lists={shoppingLists} setCurrentList={setCurrentList} />
+      <SavedLists lists={shoppingLists} setCurrentList={setCurrentList} currentList={currentList} />
     </Box>
   );
 };

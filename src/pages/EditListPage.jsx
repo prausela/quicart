@@ -7,12 +7,19 @@ import {
   ListItem,
   Button,
 } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import QuickCart from "../components/QuickCart";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 const EditListPage = ({ currentList, setCurrentList, productsList }) => {
   const [option, setOption] = useState(null);
+  const [trigger, setTrigger] = useState(true);
+
+  console.log(currentList);
+
+  useEffect(() => {
+    setTrigger(!trigger);
+  }, [currentList]);
 
   return (
     <Box
@@ -42,28 +49,28 @@ const EditListPage = ({ currentList, setCurrentList, productsList }) => {
         }}
         disableClearable
       />
-      {currentList.length > 0 ? (
+      {Object.keys(currentList).length > 0 ? (
         <Typography
           variant="p"
           color="neutral.main"
           sx={{ textAlign: "left", width: "90%", ml: "0" }}
         >
-          Su lista de compras contiene {currentList.length} productos
+          Su lista de compras contiene {currentList.products.length} productos
         </Typography>
       ) : null}
       <List sx={{ width: "90%", my: 3, overflow: "auto", height: "40vh" }}>
-        {currentList.length > 0
-          ? currentList.map((product) => (
+        {Object.keys(currentList).length
+          ? currentList.products.map((productId) => (
               <ListItem
                 sx={{
                   width: "100%",
                   display: "flex",
                   justifyContent: "space-between",
                 }}
-                key={product.id}
+                key={productId}
               >
                 <Typography variant="p" color="neutral.main">
-                  {product.name}
+                  {productsList.find((p) => p.id === productId).name}
                 </Typography>
                 <DeleteIcon
                   sx={{
@@ -72,9 +79,18 @@ const EditListPage = ({ currentList, setCurrentList, productsList }) => {
                     "&:hover": { color: "error.dark" },
                   }}
                   onClick={() => {
-                    setCurrentList(
-                      currentList.filter((p) => p.id !== product.id)
+                    let listName = currentList.name;
+                    let listProducts = [...currentList.products];
+
+                    listProducts = listProducts.filter(
+                      (id) => id !== productId
                     );
+
+                    setCurrentList({
+                      name: listName,
+                      products: listProducts,
+                    });
+                    
                   }}
                 />
               </ListItem>
