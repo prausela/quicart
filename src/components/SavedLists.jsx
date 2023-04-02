@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 const SavedLists = ({ lists, currentList, setCurrentList }) => {
   const navigate = useNavigate();
-
   console.log(currentList);
 
   return (
@@ -12,9 +11,11 @@ const SavedLists = ({ lists, currentList, setCurrentList }) => {
         width: "100%",
       }}
     >
-      <Typography variant="body1" color="neutral.main" p={1}>
-        Listas de compras guardadas
-      </Typography>
+      {lists.length > 0 && (
+        <Typography variant="body1" color="neutral.main" p={1}>
+          Listas de compras guardadas
+        </Typography>
+      )}
       {lists.map((elem, index) => (
         <Button
           variant="contained"
