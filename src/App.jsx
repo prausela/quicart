@@ -1,11 +1,8 @@
 import { useState } from "react";
-import { Button, Typography } from "@mui/material";
 import { ShopTile } from "./tiles/tile";
 import { ShelfTile } from "./tiles/shelfTile";
 import { TILE_TYPE } from "./tiles/tileType";
-import SavedLists from "./components/SavedLists";
-import { Box } from "@mui/system";
-import QuickCart from "./components/QuickCart";
+import InterfaceController from "./components/InterfaceController";
 
 function App() {
   const [productList, setProductList] = useState([
@@ -92,31 +89,16 @@ function App() {
   ]);
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        minHeight: "60vh",
-        width: "90vw",
-        margin: "auto",
-      }}
-    >
-      <QuickCart />
-      <Button
-        variant="contained"
-        sx={{
-          width: "100%",
-          py: 2,
-          my: 4,
-        }}
-        onClick={() => setCurrentList({ name: "Nueva lista", products: [] })}
-      >
-        Nueva lista de compras
-      </Button>
-      <SavedLists lists={shoppingLists} setCurrentList={setCurrentList} />
-    </Box>
+    <InterfaceController 
+      productList={productList}
+      setProductList={setProductList}
+      shoppingLists={shoppingLists}
+      setShoppingLists={setShoppingLists}
+      currentList={currentList}
+      setCurrentList={setCurrentList}
+      shoppings={shoppings}
+      setShoppings={setShoppings}
+    />
   );
 }
 

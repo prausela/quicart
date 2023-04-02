@@ -12,6 +12,7 @@
     "@mui/material": "^5.11.15",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-router-dom": "^6.10.0",
     "workbox-recipes": "^6.2.4",
     "workbox-routing": "^6.2.4",
     "workbox-strategies": "^6.2.4"
