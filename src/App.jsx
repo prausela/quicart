@@ -1,60 +1,66 @@
-import { useState } from 'react'
-import { Button, Typography } from '@mui/material'
-import { ShopTile } from './tiles/tile';
-import { ShelfTile } from './tiles/shelfTile';
-import { TILE_TYPE } from './tiles/tileType';
+import { useState } from "react";
+import { ShopTile } from "./tiles/tile";
+import { ShelfTile } from "./tiles/shelfTile";
+import { TILE_TYPE } from "./tiles/tileType";
+import InterfaceController from "./components/InterfaceController";
 
 function App() {
-  const [productList, setProductList] = useState(
-  [{id: 1, name: "Leche La Serenísima 1L"},
-      {id: 2, name: "Palta Hass 1u"},
-      {id: 3, name: "Vivere Suavizante Clásico"},
-      {id: 4, name: "Suprema de Pollo 1kg"},
-      {id: 5, name: "Lomo Premium 1kg"},
-      {id: 6, name: "Milanesa Nalga 1kg"},
-      {id: 7, name: "Bife de Chorizo 1kg"},
-      {id: 8, name: "Beefeater London Dry Gin 1L"},
-      {id: 9, name: "Aperitivo Campari 750cc"},
-      {id: 10, name: "Cerveza Heineken"},
-      {id: 11, name: "Oreo Galletas"},
-      {id: 12, name: "Finlandia Queso Untable"},
-      {id: 13, name: "Cebolla Blanca 1kg"},
-      {id: 14, name: "Limón 1u"},
-      {id: 15, name: "Pera 1u"},
-      {id: 16, name: "Yogurisimo Natural"},
-      {id: 17, name: "Leche Condensada"},
-      {id: 18, name: "Crema de Leche Tonadita 200cc"},
-      {id: 19, name: "Manteca La Serenísima"},
-      {id: 20, name: "Sprite Light 1L"},
-      {id: 21, name: "Coca-Cola Original 2.25l"},
-      {id: 22, name: "Arvejas Remojadas en Lata"},
-      {id: 23, name: "Ketchup Hellmann's"},
-      {id: 24, name: "Pure de Tomates"},
-      {id: 25, name: "Fideos Don Vincente"},
-      {id: 26, name: "Arroz Dos Hermanos"},
-      {id: 27, name: "Aceite de Girasol Pureza"},
-      {id: 28, name: "Vinagre de Alcohol"},
-      {id: 29, name: "Giacomo Capelletini Tricolor"},
-      {id: 30, name: "Dulce de Leche La Serenísima"},
-      {id: 31, name: "Miel Aleluya"},
-      {id: 32, name: "El Brocal Mermelada de Ciruela"},
-      {id: 33, name: "Alicante Orégano"},
-      {id: 34, name: "Sal Fina"},
-      {id: 35, name: "Playadito Yerba Mate"},
-      {id: 36, name: "Papel Higiénico Elite"},
-      {id: 37, name: "Procenex Limpiador Lavanda"},
-      {id: 38, name: "Jamón Cocido Paladini"},
-      {id: 39, name: "Malbec Alma Mora"},
-      {id: 40, name: "Pilas Duracell"},
+  const [productList, setProductList] = useState([
+    { id: 1, name: "Leche La Serenísima 1L" },
+    { id: 2, name: "Palta Hass 1u" },
+    { id: 3, name: "Vivere Suavizante Clásico" },
+    { id: 4, name: "Suprema de Pollo 1kg" },
+    { id: 5, name: "Lomo Premium 1kg" },
+    { id: 6, name: "Milanesa Nalga 1kg" },
+    { id: 7, name: "Bife de Chorizo 1kg" },
+    { id: 8, name: "Beefeater London Dry Gin 1L" },
+    { id: 9, name: "Aperitivo Campari 750cc" },
+    { id: 10, name: "Cerveza Heineken" },
+    { id: 11, name: "Oreo Galletas" },
+    { id: 12, name: "Finlandia Queso Untable" },
+    { id: 13, name: "Cebolla Blanca 1kg" },
+    { id: 14, name: "Limón 1u" },
+    { id: 15, name: "Pera 1u" },
+    { id: 16, name: "Yogurisimo Natural" },
+    { id: 17, name: "Leche Condensada" },
+    { id: 18, name: "Crema de Leche Tonadita 200cc" },
+    { id: 19, name: "Manteca La Serenísima" },
+    { id: 20, name: "Sprite Light 1L" },
+    { id: 21, name: "Coca-Cola Original 2.25l" },
+    { id: 22, name: "Arvejas Remojadas en Lata" },
+    { id: 23, name: "Ketchup Hellmann's" },
+    { id: 24, name: "Pure de Tomates" },
+    { id: 25, name: "Fideos Don Vincente" },
+    { id: 26, name: "Arroz Dos Hermanos" },
+    { id: 27, name: "Aceite de Girasol Pureza" },
+    { id: 28, name: "Vinagre de Alcohol" },
+    { id: 29, name: "Giacomo Capelletini Tricolor" },
+    { id: 30, name: "Dulce de Leche La Serenísima" },
+    { id: 31, name: "Miel Aleluya" },
+    { id: 32, name: "El Brocal Mermelada de Ciruela" },
+    { id: 33, name: "Alicante Orégano" },
+    { id: 34, name: "Sal Fina" },
+    { id: 35, name: "Playadito Yerba Mate" },
+    { id: 36, name: "Papel Higiénico Elite" },
+    { id: 37, name: "Procenex Limpiador Lavanda" },
+    { id: 38, name: "Jamón Cocido Paladini" },
+    { id: 39, name: "Malbec Alma Mora" },
+    { id: 40, name: "Pilas Duracell" },
   ]);
 
-  const [shoppingLists, setShoppingLists] = useState(
-    {name: "Cena Familiar", products: [2, 4, 26, 27, 14, 31, 34, 28, 38, 33, 23, 20, 21]},
-    {name: "Compra Semanal", products: [3, 36, 37, 38, 24, 25, 29, 35, 11, 8]}
-  );
+  const [shoppingLists, setShoppingLists] = useState([
+    {
+      name: "Cena Familiar",
+      products: [2, 4, 26, 27, 14, 31, 34, 28, 38, 33, 23, 20, 21],
+    },
+    {
+      name: "Compra Semanal",
+      products: [3, 36, 37, 38, 24, 25, 29, 35, 11, 8],
+    },
+  ]);
 
   //productId: isChecked
-  const [currentList, setCurrentList] = useState([]);
+  const [currentList, setCurrentList] = useState(0);
 
   const [shoppings, setShoppings] = useState([{id: 1, name: "Carrefour Retiro", distance: "1.5km", address: "Arroyo 810",
     map: [
@@ -76,23 +82,18 @@ function App() {
     products: [1,2,3,4,6,7,9,10,12,13,14,15,16,17,18,20,22,23,24,28,30,31,32,33,36,37,39,40]
     }]);
 
-  console.log(shoppings);
-
   return (
-    <>
-    <Button variant="contained" color="primary"> Hola Mundo </Button>
-    <Button variant="outlined" color="secondary"> Hola Mundo </Button>
-    <Typography variant="h1">
-      Hola Mundo
-    </Typography>
-    <Typography variant="h2">
-      Hola Mundo
-    </Typography>
-    <Typography variant="p">
-      Hola Mundo
-    </Typography>
-    </>
-  )
+    <InterfaceController 
+      productList={productList}
+      setProductList={setProductList}
+      shoppingLists={shoppingLists}
+      setShoppingLists={setShoppingLists}
+      currentList={currentList}
+      setCurrentList={setCurrentList}
+      shoppings={shoppings}
+      setShoppings={setShoppings}
+    />
+  );
 }
 
-export default App
+export default App;
