@@ -48,7 +48,16 @@ const InterfaceController = ({
               />
             }
           />
-          <Route path="/map" element={<AisleMapPage />} />
+          <Route 
+            path="/map" 
+            element={
+              <AisleMapPage 
+                currentList={currentList}
+                setCurrentList={setCurrentList}
+                productList={productList}
+              />
+            }
+          />
         </Route>
       </Routes>
     </Router>
