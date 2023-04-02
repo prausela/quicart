@@ -9,7 +9,6 @@ const QuickCart = () => {
       }}
     >
       <img
-        styles
         style={{ width: "100%", height: "100%", objectFit: "contain" }}
         src="../../public/images/pwa/logo.png"
         alt="logo"

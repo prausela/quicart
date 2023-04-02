@@ -11,7 +11,7 @@ const SavedLists = ({ lists, setCurrentList }) => {
       <Typography variant="body1" color="neutral.main" p={1}>
         Listas de compras guardadas
       </Typography>
-      {lists.map((elem) => (
+      {lists.map((elem, index) => (
         <Button
           variant="contained"
           color="secondary"
@@ -20,7 +20,8 @@ const SavedLists = ({ lists, setCurrentList }) => {
             py: 2,
             my: 1,
           }}
-          onClick={() => console.log("holi")}
+          onClick={() => setCurrentList(elem)}
+          key={index}
         >
           {elem.name}
         </Button>
