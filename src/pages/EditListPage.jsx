@@ -52,30 +52,34 @@ const EditListPage = ({ currentList, setCurrentList, productsList }) => {
         </Typography>
       ) : null}
       <List sx={{ width: "90%", my: 3, overflow: "auto", height: "40vh" }}>
-        {currentList.map((product) => (
-          <ListItem
-            sx={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "space-between",
-            }}
-            key={product.id}
-          >
-            <Typography variant="p" color="neutral.main">
-              {product.name}
-            </Typography>
-            <DeleteIcon
-              sx={{
-                cursor: "pointer",
-                color: "neutral.main",
-                "&:hover": { color: "error.dark" },
-              }}
-              onClick={() => {
-                setCurrentList(currentList.filter((p) => p.id !== product.id));
-              }}
-            />
-          </ListItem>
-        ))}
+        {currentList.length > 0
+          ? currentList.map((product) => (
+              <ListItem
+                sx={{
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+                key={product.id}
+              >
+                <Typography variant="p" color="neutral.main">
+                  {product.name}
+                </Typography>
+                <DeleteIcon
+                  sx={{
+                    cursor: "pointer",
+                    color: "neutral.main",
+                    "&:hover": { color: "error.dark" },
+                  }}
+                  onClick={() => {
+                    setCurrentList(
+                      currentList.filter((p) => p.id !== product.id)
+                    );
+                  }}
+                />
+              </ListItem>
+            ))
+          : null}
       </List>
       <Box
         sx={{

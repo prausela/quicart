@@ -1,8 +1,9 @@
 import { Box, Button } from "@mui/material";
 import QuickCart from "../components/QuickCart";
 import SavedLists from "../components/SavedLists";
+import { Link } from "react-router-dom";
 
-const ListSelectionPage = ({shoppingLists, setCurrentList}) => {
+const ListSelectionPage = ({ shoppingLists, setCurrentList }) => {
   return (
     <Box
       sx={{
@@ -16,20 +17,22 @@ const ListSelectionPage = ({shoppingLists, setCurrentList}) => {
       }}
     >
       <QuickCart />
-      <Button
-        variant="contained"
-        sx={{
-          width: "100%",
-          py: 2,
-          my: 4,
-        }}
-        onClick={() => setCurrentList({ name: "Nueva lista", products: [] })}
-      >
-        Nueva lista de compras
-      </Button>
+      <Link to="/list">
+        <Button
+          variant="contained"
+          sx={{
+            width: "100%",
+            py: 2,
+            my: 4,
+          }}
+          onClick={() => setCurrentList({ name: "Nueva lista", products: [] })}
+        >
+          Nueva lista de compras
+        </Button>
+      </Link>
       <SavedLists lists={shoppingLists} setCurrentList={setCurrentList} />
     </Box>
-  )
-}
+  );
+};
 
 export default ListSelectionPage;
