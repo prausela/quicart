@@ -1,18 +1,20 @@
-import { Typography } from "@mui/material";
+import { Box } from "@mui/material";
 
 const QuickCart = () => {
   return (
-    <>
-      <Typography
-        variant="h1"
-        sx={{
-          fontWeight: "bold",
-          color: "neutral.dark",
-        }}
-      >
-        QUICK CART
-      </Typography>
-    </>
+    <Box
+      sx={{
+        height: "300px",
+        width: "300px",
+      }}
+    >
+      <img
+        styles
+        style={{ width: "100%", height: "100%", objectFit: "contain" }}
+        src="../../public/images/pwa/logo.png"
+        alt="logo"
+      />
+    </Box>
   );
 };
 

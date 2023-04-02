@@ -63,7 +63,7 @@ function App() {
   ]);
 
   //productId: isChecked
-  const [currentList, setCurrentList] = useState([]);
+  const [currentList, setCurrentList] = useState(0);
 
   const [shoppings, setShoppings] = useState([
     {
@@ -111,7 +111,7 @@ function App() {
           py: 2,
           my: 4,
         }}
-        onClick={() => console.log("holi")}
+        onClick={() => setCurrentList({ name: "Nueva lista", products: [] })}
       >
         Nueva lista de compras
       </Button>
